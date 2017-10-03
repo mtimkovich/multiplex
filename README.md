@@ -6,6 +6,8 @@ Watch multiple videos at the same time!
 
 ## Installation
 
+Multiplex requires ffmpeg installed to work.
+
 ```bash
 virtualenv env
 source env/bin/activate
