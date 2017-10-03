@@ -76,8 +76,6 @@ for v in captures:
 out.release()
 
 # Combine the audio
-
-comb = 'combined.mp4'
 os.chdir('tmp')
 
 # Extract audio

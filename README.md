@@ -11,7 +11,7 @@ Multiplex requires ffmpeg installed to work.
 ```bash
 virtualenv env
 source env/bin/activate
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ optional arguments:
 ## Issues
 
 - Videos must have the same frame rate
-- Output videos are much larger than input videos
+- Output videos have a much larger file size than input videos
 
 ## Author
 
