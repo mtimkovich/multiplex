@@ -62,7 +62,7 @@ while True:
         if comb_frame is None:
             comb_frame = frame.copy()
         else:
-            alpha = 0.5
+            alpha = 0.75
             comb_frame = cv2.addWeighted(comb_frame, alpha, frame, 1-alpha, 0)
 
     if num_finished == len(captures):
@@ -85,7 +85,7 @@ for v in videos:
     fn = os.path.basename(fn)
     fns.append(fn)
     ret = subprocess.call('ffmpeg -i "{}" -ab 160k -ac 2 -ar 44100 -vn "{}.wav"'
-        .format(v, fn), shell=True)
+                          .format(v, fn), shell=True)
 
     if ret != 0:
         sys.exit(1)
@@ -95,14 +95,14 @@ inputs = ''.join(' -i "{}.wav"'.format(fn) for fn in fns)
 output_wav = 'output.wav'
 
 ret = subprocess.call('ffmpeg {} -filter_complex amix=inputs={} {}'
-        .format(inputs, len(videos), output_wav), shell=True)
+                      .format(inputs, len(videos), output_wav), shell=True)
 
 if ret != 0:
     sys.exit(1)
 
 # Replace audio on video
 ret = subprocess.call('ffmpeg -i {} -i {} -c:v copy -map 0:v:0 -map 1:a:0 {}'
-        .format(comb, output_wav, args.output), shell=True)
+                      .format(comb, output_wav, args.output), shell=True)
 
 if ret != 0:
     sys.exit(1)
