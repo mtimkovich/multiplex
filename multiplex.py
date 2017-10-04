@@ -61,7 +61,7 @@ while True:
         if comb_frame is None:
             comb_frame = frame.copy()
         else:
-            alpha = 0.95
+            alpha = 0.75
             comb_frame = cv2.addWeighted(comb_frame, alpha, frame, alpha, 0)
 
     if num_finished == len(captures):
