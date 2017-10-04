@@ -45,7 +45,6 @@ fourcc = cv2.VideoWriter_fourcc(*'MP4V')
 out = cv2.VideoWriter(out_file, fourcc, args.frame_rate, size)
 
 # Combine video frames
-
 while True:
     comb_frame = None
     num_finished = 0
@@ -62,8 +61,8 @@ while True:
         if comb_frame is None:
             comb_frame = frame.copy()
         else:
-            alpha = 0.75
-            comb_frame = cv2.addWeighted(comb_frame, alpha, frame, 1-alpha, 0)
+            alpha = 0.95
+            comb_frame = cv2.addWeighted(comb_frame, alpha, frame, alpha, 0)
 
     if num_finished == len(captures):
         break
